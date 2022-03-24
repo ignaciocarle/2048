@@ -1,0 +1,18 @@
+.board {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: solid 1px black;
+  border-radius: 15%;
+}
+
+.btn {
+  margin: 2em;
+}

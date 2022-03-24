@@ -1,0 +1,8 @@
+<div class="board">
+  <div class="tile" *ngFor="let value of board; let i = index">
+    <p *ngIf="value !== 0">{{ value }}</p>
+  </div>
+</div>
+<button class="btn" (click)="this.moveDown()">move down</button>
+<br />
+<button class="btn" (click)="this.newgame()">Reset</button>
