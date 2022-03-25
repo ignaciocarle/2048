@@ -1,8 +1,10 @@
+<h1>{{ score }}</h1>
+
 <div class="board">
-  <div class="tile" *ngFor="let value of board; let i = index">
+  <div class="tile" *ngFor="let value of board">
     <p *ngIf="value !== 0">{{ value }}</p>
   </div>
 </div>
-<button class="btn" (click)="this.moveDown()">move down</button>
+<button class="btn" (click)="this.moveRight()">move right</button>
 <br />
-<button class="btn" (click)="this.newgame()">Reset</button>
+<button class="btn" (click)="this.newgame(boardSize)">Reset</button>
