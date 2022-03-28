@@ -7,11 +7,12 @@
     </div>
   </div>
 </div>
-<button class="btn" (click)="this.moveLeft()">move left</button>
-<button class="btn" (click)="this.moveRight()">move right</button>
+<button class="btn" (click)="this.userMove('l')">move left</button>
+<button class="btn" (click)="this.userMove('r')">move right</button>
 <br />
-<button class="btn" (click)="this.moveUp()">move up</button>
-<button class="btn" (click)="this.moveDown()">move down</button>
+<button class="btn" (click)="this.userMove('u')">move up</button>
+<button class="btn" (click)="this.userMove('d')">move down</button>
 <br />
-<button class="btn" (click)="this.newgame(boardSize)">Reset</button>
-<button class="btn" (click)="this.testTranspose()">TEST</button>
+<button class="btn" (click)="this.reset()">Reset</button>
+<br />
+<button class="btn" (click)="this.testAddTile()">TEST</button>
