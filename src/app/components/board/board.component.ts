@@ -18,17 +18,20 @@ export class BoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.newgame(4)
+    this.newgame()
   }
 
-  private newgame(size: number): void {
-    this.boardSize = size;
+
+  ////INITIAL SETTINGS
+  private newgame(): void {
+    this.boardSize = 4;
     this.goal = 2048;
     this.max = 0
     this.score = 0;
-    this.board = Array(size).fill(Array(size).fill(0));
+    this.board = Array.from({ length: this.boardSize }, () => Array.from({ length: this.boardSize }, () => 0))
     this.previousBoard = this.board
-    this.board = this.addTile()
+    this.addTile()
+    this.addTile()
 /*    const testBoard = [
       [0, 0, 0, 2],
       [0, 2, 4, 2],
@@ -46,23 +49,24 @@ export class BoardComponent implements OnInit {
     this.board = orientationBoard;
 */  }
 
-  private addTile(): number[][] {
+  private addTile(): void {
     const nextBoard = this.board;
     const row = Math.floor(Math.random() * this.boardSize);
     const col = Math.floor(Math.random() * this.boardSize);
 
     if (nextBoard[col][row] === 0) {
       nextBoard[col][row] = 2
-      console.log("row " + row);
-      console.log("col " + col);
-
-      console.log(nextBoard);
-
     } else { this.addTile() }
-    return nextBoard
+    this.board = nextBoard
   }
 
+  ////USER ACTIONS
+
+
+
   public userMove(dir: string) {
+    this.previousBoard = this.board
+
     switch (dir) {
       case "r":
         this.moveRight()
@@ -77,8 +81,11 @@ export class BoardComponent implements OnInit {
         this.moveUp()
         break;
       default:
+        console.log("wrong entry");
         break;
     }
+    if (this.previousBoard === this.board) return
+    this.addTile()
   }
 
   private moveRight(): void {
@@ -115,7 +122,6 @@ export class BoardComponent implements OnInit {
 
   private move(board: number[][]): number[][] {
     const nextBoard: number[][] = [];
-    this.previousBoard = this.board;
 
     board.forEach((row: number[]) => {
       const noZeros: number[] = row.filter(e => e !== 0);
@@ -169,10 +175,12 @@ export class BoardComponent implements OnInit {
 
   /////////////////////////////////////TESTING///////////////////
   public reset(): void {
-    this.newgame(4)
+    this.newgame()
   }
 
   public testAddTile(): void {
-    this.board = this.addTile()
+    this.addTile()
   }
+
+
 }
