@@ -1,28 +1,34 @@
 <main class="container">
   <div class="col">
     <div class="row aligned-left">
-      <h1>Score: {{ getScore }}</h1>
-      <button class="btn" (click)="this.reset()">Reset</button>
+      <h1>Score: {{ this.match.getScore }}</h1>
+      <button class="btn" (click)="this.match.reset()">Reset</button>
     </div>
     <div class="row">
-      <button class="sqr-btn" (click)="this.takeTurn('u')">move up</button>
+      <button class="sqr-btn" (click)="this.match.takeTurn('u')">
+        move up
+      </button>
     </div>
     <div class="row">
-      <button class="sqr-btn" (click)="this.takeTurn('l')">move left</button>
+      <button class="sqr-btn" (click)="this.match.takeTurn('l')">
+        move left
+      </button>
       <div class="col">
-        <div class="row" *ngFor="let row of getBoard">
+        <div class="row" *ngFor="let row of this.match.getBoard">
           <div class="tile" *ngFor="let value of row">
             <p *ngIf="value != 0">{{ value }}</p>
           </div>
         </div>
       </div>
-      <button class="sqr-btn" (click)="this.takeTurn('r')">move right</button>
+      <button class="sqr-btn" (click)="this.match.takeTurn('r')">
+        move right
+      </button>
     </div>
     <div class="row">
-      <button class="sqr-btn" (click)="this.takeTurn('d')">move down</button>
+      <button class="sqr-btn" (click)="this.match.takeTurn('d')">
+        move down
+      </button>
     </div>
   </div>
   <br />
-
-  <button class="btn" (click)="this.testAddTile()">TEST</button>
 </main>
